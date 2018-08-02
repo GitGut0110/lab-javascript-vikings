@@ -2,17 +2,19 @@
 function Soldier(health, strength) {
   this.health = health;
   this.strength = strength;
-  this.attack = function () {
-      return this.strength;
-  };
   this.receiveDamage = function(damage) {
       this.health -= damage;
   };
 }
+Soldier.prototype.attack= function(){
+  return this.strength
+};
 
 
-//var vlad = new Soldier(1,2)
-//console.log(vlad);
+
+var vlad = new Soldier(1,2)
+//Soldier.attack()
+console.log(vlad);
 
 
 // Viking
@@ -30,10 +32,8 @@ function Viking(name,health,strength) {
   this.battleCry = function(){
     return 'Odin Owns You All!';
   }
-  this.attack = function () {
-    return this.strength;
-};
 }
+Viking.prototype = Object.create(Soldier.prototype);
 
 // Saxon
 function Saxon(health,strength) {
@@ -46,10 +46,7 @@ function Saxon(health,strength) {
      var result = 'A Saxon has died in combat'}
     return result;
   }
-  this.attack = function () {
-    return this.strength;
-};
 }
-
+Saxon.prototype = Object.create(Soldier.prototype);
 // War
 function War() {}
